@@ -1,0 +1,91 @@
+﻿@model WebApplication3.Models.HeadRegistrationDetails
+
+@{
+    ViewData["Title"] = "HeadRegistrationDetails";
+}
+
+<h2>HeadRegistrationDetails</h2>
+
+<h4>HeadRegistrationDetails</h4>
+<hr />
+ <div class="row">
+        <div class="col-md-4">
+            <form asp-action="HeadRegistrationDetails">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="HeadName" class="control-label"></label>
+                    <input asp-for="HeadName" type="text" class="form-control" />
+                    <span asp-validation-for="HeadName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TotalfamilyMember" class="control-label"></label>
+                    <input asp-for="TotalfamilyMember" class="form-control" />
+                    <span asp-validation-for="TotalfamilyMember" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadAge" class="control-label"></label>
+                    <input asp-for="HeadAge" class="form-control" />
+                    <span asp-validation-for="HeadAge" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadGender" class="control-label"></label>
+                    <input asp-for="HeadGender" class="form-control" />
+                    <span asp-validation-for="HeadGender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadAddress" class="control-label"></label>
+                    <input asp-for="HeadAddress" class="form-control" />
+                    <span asp-validation-for="HeadAddress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadHighestEducationDetails" class="control-label"></label>
+                    <input asp-for="HeadHighestEducationDetails" class="form-control" />
+                    <span asp-validation-for="HeadHighestEducationDetails" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FamilyAilment" class="control-label"></label>
+                    <input asp-for="FamilyAilment" class="form-control" />
+                    <span asp-validation-for="FamilyAilment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadReligion" class="control-label"></label>
+                    <input asp-for="HeadReligion" class="form-control" />
+                    <span asp-validation-for="HeadReligion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadCaste" class="control-label"></label>
+                    <input asp-for="HeadCaste" class="form-control" />
+                    <span asp-validation-for="HeadCaste" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadAnunalIncome" class="control-label"></label>
+                    <input asp-for="HeadAnunalIncome" class="form-control" />
+                    <span asp-validation-for="HeadAnunalIncome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadAdharCardNumber" class="control-label"></label>
+                    <input asp-for="HeadAdharCardNumber" size="12" maxlength="12" minlength="12" class="form-control" />
+                    <span asp-validation-for="HeadAdharCardNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadMobileNumber" class="control-label"></label>
+                    <input asp-for="HeadMobileNumber" type="tel" size="12" maxlength="12" minlength="12" class="form-control" />
+                    <span asp-validation-for="HeadMobileNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

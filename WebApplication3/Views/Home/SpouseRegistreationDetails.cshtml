@@ -1,0 +1,88 @@
+﻿@model WebApplication3.Models.SpouseRegistreationDetails
+
+@{
+    ViewData["Title"] = "SpouseRegistreationDetails";
+}
+
+<h2>SpouseRegistreationDetails</h2>
+
+<h4>SpouseRegistreationDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SpouseRegistreationDetails">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SpouseName" class="control-label"></label>
+                <input asp-for="SpouseName" class="form-control" />
+                <span asp-validation-for="SpouseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseOccupation" class="control-label"></label>
+                <input asp-for="SpouseOccupation" class="form-control" />
+                <span asp-validation-for="SpouseOccupation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseAge" class="control-label"></label>
+                <input asp-for="SpouseAge" class="form-control" />
+                <span asp-validation-for="SpouseAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseGender" class="control-label"></label>
+                <input asp-for="SpouseGender" class="form-control" />
+                <span asp-validation-for="SpouseGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseRelation" class="control-label"></label>
+                <input asp-for="SpouseRelation" class="form-control" />
+                <span asp-validation-for="SpouseRelation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseLivingSince" class="control-label"></label>
+                <input asp-for="SpouseLivingSince"  class="form-control" />
+                <span asp-validation-for="SpouseLivingSince" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseHighestEducationDetails" class="control-label"></label>
+                <input asp-for="SpouseHighestEducationDetails" class="form-control" />
+                <span asp-validation-for="SpouseHighestEducationDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseFamilyAilment" class="control-label"></label>
+                <input asp-for="SpouseFamilyAilment" class="form-control" />
+                <span asp-validation-for="SpouseFamilyAilment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseReligion" class="control-label"></label>
+                <input asp-for="SpouseReligion" class="form-control" />
+                <span asp-validation-for="SpouseReligion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseRemarks" class="control-label"></label>
+                <input asp-for="SpouseRemarks" class="form-control" />
+                <span asp-validation-for="SpouseRemarks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseAdharCardNumber" class="control-label"></label>
+                <input asp-for="SpouseAdharCardNumber" size="12" maxlength="12" minlength="12"  class="form-control" />
+                <span asp-validation-for="SpouseAdharCardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpouseMobileNumber" class="control-label"></label>
+                <input asp-for="SpouseMobileNumber" type="tel" size="10" maxlength="10" minlength="10"   class="form-control" />
+                <span asp-validation-for="SpouseMobileNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

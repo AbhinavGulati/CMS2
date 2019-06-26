@@ -1,0 +1,376 @@
+﻿@model WebApplication3.Models.BindingModel;
+@using System.Data;
+@{
+    ViewData["Title"] = "GetRegistered";
+}
+
+<h2>GetRegistered</h2>
+
+<h4>BindingModel</h4>
+<hr />
+
+<form asp-action="GetRegistered">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+
+
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h3>Select District</h3>
+                                        <select id="DistrictCode">
+                                            <option value="">---Choose One---</option>
+                                            @{
+                                                DataTable dt1;
+                                                if (ViewData["DistrictName"] != null)
+                                                {
+                                                    dt1 = (DataTable)ViewData["DistrictName"];
+                                                    for (int i = 0; i < dt1.Rows.Count; i++)
+                                                    {
+                                                        <option value="@dt1.Rows[i]["DistrictCode"]">@dt1.Rows[i]["DistrictName"]</option>
+                                                    }
+                                                }
+                                            }
+                                        </select>
+                                    </td>
+                                  
+                                    <td>
+                                        <h3>Select Tehsil</h3>
+                                        <select id="Tehsil">
+                                            <option value="">-----Select------</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <h3>Select City</h3>
+                                        <select id="City">
+                                            <option value="">-----Select------</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <h3>Select Village</h3>
+                                        <select id="Village">
+                                            <option value="">-----Select------</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="div1">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    <h3>Head Of family</h3>
+
+                    <div class="panel-body" >
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td><b> Head Name</b> </td>
+                                    <td> <input asp-for="head[0].HeadName" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Total Family Member</b> </td>
+                                    <td> <input asp-for="head[0].TotalfamilyMember" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Head Age</b> </td>
+                                    <td> <input asp-for="head[0].HeadAge" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>HeadGender</b> </td>
+                                    <td> <input asp-for="head[0].HeadGender" type="radio" value="Male"  GroupName="Status" />Male</td>
+                                    <td> <input asp-for="head[0].HeadGender" type="radio" value="Female"  GroupName="Status"/>Female</td>
+                                    <td> <input asp-for="head[0].HeadGender" type="radio" value="Other" GroupName="Status"/>Other</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Head Caste</b> </td>
+                                    <td> <input asp-for="head[0].HeadCaste" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Head Religion</b> </td>
+                                    <td> <input asp-for="head[0].HeadReligion" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>HeadAddress</b> </td>
+                                    <td> <input asp-for="head[0].HeadAddress" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Head Highest Education Detail</b> </td>
+                                    <td> <input asp-for="head[0].HeadHighestEducationDetails" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Family Ailment</b> </td>
+                                    <td> <input asp-for="head[0].FamilyAilment" type="text" class="form-control" /></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Head Annual Income</b> </td>
+                                    <td> <input asp-for="head[0].HeadAnunalIncome" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b> Head AdharCard Number</b> </td>
+                                    <td> <input asp-for="head[0].HeadAdharCardNumber" type="text" maxlength="12" minlength="12" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b> Head Mobile Number</b> </td>
+                                    <td> <input asp-for="head[0].HeadMobileNumber" type="tel" size="10" maxlength="10" minlength="10" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b> Are you Married ?</b> </td>
+                                    <td> <input asp-for="head[0].Martial_Status" type="radio" class="martial" onclick="Show1"value="Yes" GroupName="Status"/>Yes</td>
+                                    <td> <input asp-for="head[0].Martial_Status" type="radio" class="martial" onclick="Show2 "value="No"  GroupName="Status"/>No</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="div2">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    <h3>Registration Of Spouse </h3>
+
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td><b> Spouse Name</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseName" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Spouse Age</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseAge" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Spouse Occupation</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseOccupation" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Spouse Gender</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseGender" type="radio" value="Male" GroupName="Status" />Male</td>
+                                    <td> <input asp-for="spouse[0].SpouseGender" type="radio" value="Female" GroupName="Status" />Female</td>
+                                    <td> <input asp-for="spouse[0].SpouseGender" type="radio" value="Other" GroupName="Status" />Other</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Spouse Relation</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseRelation" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Spouse Living Since(in Years)</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseLivingSince" type="tel" size="4" maxlength="4" minlength="4"  class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Spouse Highest Education Details</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseHighestEducationDetails" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Spouse Family Ailment</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseFamilyAilment" type="text" class="form-control" /></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Spouse Religion</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseReligion" type="text" class="form-control" /></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Spouse Remarks</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseRemarks" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b> Spouse AdharCard Number</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseAdharCardNumber" type="text" size="12" maxlength="12" minlength="12" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b> Spouse Mobile Number</b> </td>
+                                    <td> <input asp-for="spouse[0].SpouseMobileNumber" type="tel" size="10" maxlength="10" minlength="10" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b> Do You Have Child ?</b> </td>
+                                    <td> <input asp-for="spouse[0].Child" type="radio"  class="ChildExist"  onclick="Show1" value="Yes" GroupName="Status" />Yes</td>
+                                    <td> <input asp-for="spouse[0].Child" type="radio" class="ChildExist"  onclick="Show2" value="No" GroupName="Status" />No</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+    <div class="container" id="div3">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    <h3>Registration Of Child </h3>
+
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td><b> Child Name</b> </td>
+                                    <td> <input asp-for="Child[0].ChildName" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Child Occupation</b> </td>
+                                    <td> <input asp-for="Child[0].ChildOccupation" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Child Age	</b> </td>
+                                    <td> <input asp-for="Child[0].ChildAge" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Child Gender</b> </td>
+                                    <td> <input asp-for="Child[0].ChildGender" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Child Relation</b> </td>
+                                    <td> <input asp-for="Child[0].ChildRelation" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Child Living Since</b> </td>
+                                    <td> <input asp-for="Child[0].ChildLivingSince" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Child Highest Education Details</b> </td>
+                                    <td> <input asp-for="Child[0].ChildHighestEducationDetails" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Child FamilyAilment</b> </td>
+                                    <td> <input asp-for="Child[0].ChildFamilyAilment" type="text" class="form-control" /></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Child Religion</b> </td>
+                                    <td> <input asp-for="Child[0].ChildReligion" type="text" class="form-control" /></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Child Remarks</b> </td>
+                                    <td> <input asp-for="Child[0].ChildRemarks" type="text" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b> Child AdharCard Number</b> </td>
+                                    <td> <input asp-for="Child[0].ChildAdharCardNumber" type="text" size="12" maxlength="12" minlength="12" class="form-control" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b> Child Mobile Number</b> </td>
+                                    <td> <input asp-for="Child[0].ChildMobileNumber" type="tel" size="10" maxlength="10" minlength="10" class="form-control" /></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<script src="~/js/site.js"></script>
+<script src="~/js/site.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
+<script type="text/javascript">
+        $("#div1").hide();
+        $("#div2").hide();
+        $("#div3").hide();
+        $('#DistrictCode').on('change', function () {
+            $.ajax({
+                url: "/Home/TehsilModel",
+                data: { id: this.value },
+                type: "Post",
+                success: function (result) {
+                    console.log(result)
+                    var html = "<option value=''>--select--</option>";
+                    for (var i = 0; i < result.length; i++) {
+                        html += "<option value='" + result[i].tehsilCode + "'>" + result[i].tehsilName + "</option>";
+                    }
+                    $("#Tehsil").html(html);
+                }
+            });
+        });
+        $('#Tehsil').on('change', function () {
+            $.ajax({
+                url: "/Home/CityModel",
+                data: { id: this.value },
+                type: "Post",
+                success: function (result) {
+                    console.log(result)
+                    var html = "<option value=''>--select--</option>";
+                    for (var i = 0; i < result.length; i++) {
+                        html += "<option value='" + result[i].cityCode + "'>" + result[i].cityName + "</option>";
+                    }
+                    $("#City").html(html);
+                }
+            });
+        });
+        $('#City').on('change', function () {
+            $.ajax({
+                url: "/Home/VillageModel",
+                data: { id: this.value },
+                type: "Post",
+                success: function (result) {
+                    console.log(result)
+                    var html = "<option value=''>--select--</option>";
+                    for (var i = 0; i < result.length; i++) {
+                        html += "<option value='" + result[i].villageCode + "'>" + result[i].villageName + "</option>";
+                    }
+                    $("#Village").html(html);
+                }
+            });
+        });
+        $("#Village").on('change', function () {
+            if (this.value == '') {
+                $("#div1").hide();
+            }
+            else
+                $("#div1").slideDown("3000");
+        });
+    $(function () {
+        $(".martial").click(function () {
+            if ($(this).val() === "Yes")
+                 $("#div2").slideDown("3000");
+            else
+                $("#div2").hide();
+        });
+    });
+     $(function () {
+        $(".ChildExist").click(function () {
+            if ($(this).val() === "Yes")
+               $("#div3").slideDown("3000");
+            else
+                $("#div3").hide();
+        });
+    });
+
+
+</script>
+
+

@@ -1,0 +1,56 @@
+﻿@model WebApplication3.Models.DistrictModel
+@using  System.Data;
+@{
+    ViewData["Title"] = "RegistrationColony";
+}
+
+<h2>RegistrationColony</h2>
+
+<h4>DistrictModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegistrationColony">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DistrictCode" class="control-label"></label>
+                <input asp-for="DistrictCode" class="form-control" />
+
+                @{
+                        if (ViewBag["List"] != null)
+                    {
+                        DataTable dataTable;
+                    dataTable = (DataTable)ViewBag.List;
+                        for (int i = 0; i < ViewBag.List.Rows.Count; i++)
+                        {
+                            if (@ViewBag.List.Rows[i]["DistrictName"] == null)
+                            {
+                                <option value="@ViewBag.List.Rows[i]["DistrictName"]">NULL</option>
+                            }
+                            <option value="@ViewBag.List.Rows[i]["DistrictCode"]">@ViewBag.List.Rows[i]["DistrictName"]</option>
+                        }
+                    }
+                }
+
+                <span asp-validation-for="DistrictCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DistrictName" class="control-label"></label>
+                <select asp-for="DistrictName" class="form-control" /></select>
+                <span asp-validation-for="DistrictName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

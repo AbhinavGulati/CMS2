@@ -1,0 +1,88 @@
+﻿@model WebApplication3.Models.ChildRegistrationDetails
+
+@{
+    ViewData["Title"] = "ChildRegistrationDetails";
+}
+
+<h2>ChildRegistrationDetails</h2>
+
+<h4>ChildRegistrationDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ChildRegistrationDetails">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ChildName" class="control-label"></label>
+                <input asp-for="ChildName" class="form-control" />
+                <span asp-validation-for="ChildName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildOccupation" class="control-label"></label>
+                <input asp-for="ChildOccupation" class="form-control" />
+                <span asp-validation-for="ChildOccupation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildAge" class="control-label"></label>
+                <input asp-for="ChildAge" class="form-control" />
+                <span asp-validation-for="ChildAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildGender" class="control-label"></label>
+                <input asp-for="ChildGender" class="form-control" />
+                <span asp-validation-for="ChildGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildRelation" class="control-label"></label>
+                <input asp-for="ChildRelation" class="form-control" />
+                <span asp-validation-for="ChildRelation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildLivingSince" class="control-label"></label>
+                <input asp-for="ChildLivingSince" class="form-control" />
+                <span asp-validation-for="ChildLivingSince" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildHighestEducationDetails" class="control-label"></label>
+                <input asp-for="ChildHighestEducationDetails" class="form-control" />
+                <span asp-validation-for="ChildHighestEducationDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildFamilyAilment" class="control-label"></label>
+                <input asp-for="ChildFamilyAilment" class="form-control" />
+                <span asp-validation-for="ChildFamilyAilment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildReligion" class="control-label"></label>
+                <input asp-for="ChildReligion" class="form-control" />
+                <span asp-validation-for="ChildReligion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildRemarks" class="control-label"></label>
+                <input asp-for="ChildRemarks" class="form-control" />
+                <span asp-validation-for="ChildRemarks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildAdharCardNumber" class="control-label"></label>
+                <input asp-for="ChildAdharCardNumber" size="12" maxlength="12" minlength="12"  class="form-control" />
+                <span asp-validation-for="ChildAdharCardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildMobileNumber" class="control-label"></label>
+                <input asp-for="ChildMobileNumber" type="tel"  maxlength="10" minlength="10"   class="form-control" />
+                <span asp-validation-for="ChildMobileNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

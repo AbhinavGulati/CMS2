@@ -1,0 +1,104 @@
+﻿@model WebApplication3.Models.DistrictModel
+@using System.Data;
+
+@{
+    ViewData["Title"] = "DistrictModel";
+}
+
+<h2>DistrictModel</h2>
+
+<h4>DistrictModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DistrictModel" method="post">
+
+            <select id="DistrictCode">
+                <option value="">---Choose One---</option>
+                @{
+                    DataTable dt1;
+                    if (ViewData["DistrictName"] != null)
+                    {
+                        dt1 = (DataTable)ViewData["DistrictName"];
+                        for (int i = 0; i < dt1.Rows.Count; i++)
+                        {
+                            <option value="@dt1.Rows[i]["DistrictCode"]">@dt1.Rows[i]["DistrictName"]</option>
+                        }
+                    }
+                }
+            </select>
+            <select id="Tehsil">
+                <option value="">---Choose One---</option>
+            </select>
+
+            <select id="City">
+                <option value="">---Choose One---</option>
+            </select>
+            <select id="Village">
+                <option value="">---Choose One---</option>
+            </select>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<script src="~/js/site.js"></script>
+<script src="~/js/site.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
+<script type="text/javascript">
+          $('#DistrictCode').on('change', function () {
+            $.ajax({
+                url: "/Home/TehsilModel",
+                data: { id: this.value },
+                type: "Post",
+                success: function (result)
+                {
+                    console.log(result)
+                    var html = "<option value=''>--select--</option>";
+                    for (var i = 0; i < result.length; i++) {
+                        html += "<option value='" + result[i].tehsilCode + "'>" + result[i].tehsilName + "</option>";
+                    }
+                    $("#Tehsil").html(html);
+                }
+            });
+          });
+        $('#Tehsil').on('change', function () {
+            $.ajax({
+                url: "/Home/CityModel",
+                data: { id: this.value },
+                type: "Post",
+                success: function (result)
+                {
+                    console.log(result)
+                    var html = "<option value=''>--select--</option>";
+                    for (var i = 0; i < result.length; i++) {
+                        html += "<option value='" + result[i].cityCode + "'>" + result[i].cityName + "</option>";
+                    }
+                    $("#City").html(html);
+                }
+            });
+        }); 
+     $('#City').on('change', function () {
+            $.ajax({
+                url: "/Home/VillageModel",
+                data: { id: this.value },
+                type: "Post",
+                success: function (result)
+                {
+                    console.log(result)
+                    var html = "<option value=''>--select--</option>";
+                    for (var i = 0; i < result.length; i++) {
+                        html += "<option value='" + result[i].villageCode + "'>" + result[i].villageName + "</option>";
+                    }
+                    $("#Village").html(html);
+                }
+            });
+        }); 
+   
+</script>
